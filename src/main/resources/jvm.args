@@ -1,0 +1,19 @@
+# JavaFX Runtime Arguments
+# These arguments are used when launching FlashQuest with Java
+
+# Add JavaFX modules
+--add-modules=javafx.controls,javafx.fxml
+
+# JavaFX system properties (if needed)
+# -Djavafx.animation.pulse=60
+# -Djavafx.animation.fullspeed=false
+
+# Memory settings (adjust as needed)
+-Xms256m
+-Xmx1024m
+
+# Enable hardware acceleration (if supported)
+-Dprism.order=sw,es2,d3d
+
+# Logging configuration
+-Djava.util.logging.config.class=com.flashquest.util.LoggingConfiguration

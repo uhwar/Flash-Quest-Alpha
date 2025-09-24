@@ -1,0 +1,15 @@
+# FlashQuest Icon Placeholder
+#
+# This is a placeholder for the actual application icon.
+# In a real build, this would be a binary .ico file containing
+# the FlashQuest application icon in multiple sizes (16x16, 32x32, 48x48, etc.)
+#
+# To create a proper icon:
+# 1. Design an icon image (PNG/SVG) representing FlashQuest
+# 2. Use a tool like ImageMagick or online converters to create .ico format
+# 3. Replace this text file with the binary .ico file
+#
+# Example command to create icon from PNG:
+# magick convert flashquest-icon.png -resize 256x256 -colors 256 icon.ico
+#
+# For now, the application will use the default system icon.

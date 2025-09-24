@@ -1,0 +1,151 @@
+FlashQuest Flashcard Import Format
+===================================
+
+RULES FOR IMPORTING FLASHCARDS:
+
+1. FILE FORMAT:
+   - Use plain text (.txt) files only
+   - Encoding: UTF-8 (saves properly with international characters)
+   - One flashcard per section, separated by "---" (three dashes)
+
+2. FLASHCARD STRUCTURE:
+   Each flashcard must have these fields in this exact order:
+   
+   QUESTION: [Your question here]
+   ANSWER: [Your answer here]  
+   DIFFICULTY: [EASY, MEDIUM, or HARD]
+   CATEGORY: [Category name]
+   TAGS: [tag1, tag2, tag3] (optional - comma separated)
+   
+3. FIELD REQUIREMENTS:
+   - QUESTION: Required. Can be multiple lines. No character limit.
+   - ANSWER: Required. Can be multiple lines. No character limit.
+   - DIFFICULTY: Required. Must be exactly: EASY, MEDIUM, or HARD (case sensitive)
+   - CATEGORY: Required. Any text, will create category if it doesn't exist
+   - TAGS: Optional. Comma-separated list for filtering and organization
+
+4. FORMATTING RULES:
+   - Each field starts with the field name followed by a colon (:)
+   - Multi-line content is supported - just continue on next line
+   - Leading/trailing spaces are automatically trimmed
+   - Empty lines between fields are ignored
+   - Use "---" (three dashes) to separate flashcards
+
+5. SPECIAL CHARACTERS:
+   - Use \n for explicit line breaks in questions/answers
+   - Avoid using "---" within question/answer text (reserved separator)
+   - Unicode/emoji supported: ✅ ❌ 🎯 etc.
+
+6. IMPORT BEHAVIOR:
+   - Duplicate questions will be skipped (case-insensitive comparison)
+   - Invalid difficulty levels will default to MEDIUM
+   - Missing categories will be created automatically
+   - Malformed cards are reported but don't stop the import
+   - Progress is shown during import with success/error counts
+
+7. VALIDATION:
+   - Questions must be at least 3 characters long
+   - Answers must be at least 1 character long
+   - Category names are limited to 50 characters
+   - Individual tags are limited to 30 characters
+   - Maximum 20 tags per flashcard
+
+8. TIPS FOR AI GENERATION:
+   - Ask AI to follow this exact format
+   - Request specific categories (Java, Python, Math, etc.)
+   - Specify difficulty distribution (e.g., "60% EASY, 30% MEDIUM, 10% HARD")
+   - Include relevant tags for better organization
+
+===============================================================================
+TEMPLATE - COPY EVERYTHING BELOW THIS LINE FOR YOUR IMPORT FILE:
+===============================================================================
+
+QUESTION: What is the difference between a class and an object in Java?
+ANSWER: A class is a blueprint or template that defines the structure and behavior of objects. An object is an instance of a class - it's the actual implementation created from the class blueprint. For example, 'Car' might be a class, while 'myCar' would be an object (instance) of that class.
+DIFFICULTY: EASY
+CATEGORY: Java OOP
+TAGS: class, object, instance, blueprint, oop
+
+---
+
+QUESTION: How do you implement inheritance in Java?
+ANSWER: Inheritance in Java is implemented using the 'extends' keyword. A subclass extends a superclass to inherit its properties and methods.
+
+Example:
+class Animal {
+    void eat() { System.out.println("Eating..."); }
+}
+
+class Dog extends Animal {
+    void bark() { System.out.println("Barking..."); }
+}
+
+The Dog class inherits the eat() method from Animal and can also have its own methods like bark().
+DIFFICULTY: MEDIUM
+CATEGORY: Java OOP
+TAGS: inheritance, extends, superclass, subclass, polymorphism
+
+---
+
+QUESTION: What is the time complexity of searching in a balanced binary search tree?
+ANSWER: The time complexity of searching in a balanced binary search tree is O(log n), where n is the number of nodes in the tree. This is because in a balanced BST, the height is logarithmic, and we eliminate half of the remaining nodes at each level during the search process.
+DIFFICULTY: HARD
+CATEGORY: Data Structures
+TAGS: bst, binary search tree, time complexity, big o, search, logarithmic
+
+---
+
+QUESTION: What does the 'static' keyword mean in Java?
+ANSWER: The 'static' keyword in Java means that the member belongs to the class itself rather than to any specific instance of the class. Static members are shared among all instances and can be accessed without creating an object of the class.
+
+Key points:
+- Static variables: Shared by all instances, only one copy exists
+- Static methods: Can be called without creating an object
+- Static blocks: Execute when the class is first loaded
+- Cannot access non-static members directly from static context
+DIFFICULTY: MEDIUM
+CATEGORY: Java Basics
+TAGS: static, keyword, class member, shared, instance
+
+---
+
+QUESTION: How do you handle exceptions in Java?
+ANSWER: Exceptions in Java are handled using try-catch-finally blocks:
+
+try {
+    // Code that might throw an exception
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    // Handle specific exception
+    System.out.println("Cannot divide by zero!");
+} catch (Exception e) {
+    // Handle any other exception
+    System.out.println("An error occurred: " + e.getMessage());
+} finally {
+    // Code that always executes
+    System.out.println("Cleanup code here");
+}
+
+You can also use 'throws' keyword to declare exceptions that a method might throw.
+DIFFICULTY: EASY
+CATEGORY: Java Exception Handling
+TAGS: exception, try catch finally, throws, error handling
+
+===============================================================================
+END OF TEMPLATE
+===============================================================================
+
+USAGE INSTRUCTIONS:
+1. Copy the template section above
+2. Replace the example flashcards with your own content
+3. Follow the exact format: QUESTION:, ANSWER:, DIFFICULTY:, CATEGORY:, TAGS:
+4. Separate each flashcard with "---" (three dashes)
+5. Save as a .txt file
+6. Use the Import button in FlashQuest to upload your file
+7. Review the import results and any error messages
+
+EXAMPLE FILE NAMES:
+- java_basics_flashcards.txt
+- python_advanced_concepts.txt  
+- mathematics_calculus_review.txt
+- history_world_war_2.txt

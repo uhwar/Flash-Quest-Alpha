@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flashquest.ui.FlashcardManagerController">
+   <children>
+      <!-- Header Section -->
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="content-header">
+         <children>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#onBack" styleClass="back-button" text="← Back" />
+            <Label styleClass="screen-title" text="📚 Flashcard Manager" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+
+      <!-- Action Buttons -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="button-group">
+         <children>
+            <Button fx:id="addCardButton" mnemonicParsing="false" onAction="#onAddCard" styleClass="primary-button" text="➕ Add Card" />
+            <Button fx:id="importCardsButton" mnemonicParsing="false" onAction="#onImportCards" styleClass="secondary-button" text="📥 Import Cards" />
+            <Button fx:id="openTemplateButton" mnemonicParsing="false" onAction="#onOpenTemplate" styleClass="info-button" text="📄 View Template" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="filteredCardsLabel" styleClass="stat-label" text="0" />
+            <Label styleClass="stat-text" text="/" />
+            <Label fx:id="totalCardsLabel" styleClass="stat-label" text="0" />
+            <Label styleClass="stat-text" text="cards" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+
+      <!-- Filter Controls -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="filter-controls">
+         <children>
+            <TextField fx:id="searchField" prefWidth="250.0" promptText="Search questions, answers, or tags..." styleClass="search-field" />
+            <ComboBox fx:id="categoryFilterComboBox" prefWidth="150.0" promptText="All Categories" styleClass="filter-combo" />
+            <ComboBox fx:id="difficultyFilterComboBox" prefWidth="120.0" promptText="All Difficulties" styleClass="filter-combo" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+      </HBox>
+
+      <!-- Table Section -->
+      <VBox VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="flashcardTable" styleClass="data-table" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="questionColumn" prefWidth="300.0" text="Question" />
+                  <TableColumn fx:id="categoryColumn" prefWidth="150.0" text="Category" />
+                  <TableColumn fx:id="difficultyColumn" prefWidth="100.0" text="Difficulty" />
+                  <TableColumn fx:id="tagsColumn" prefWidth="200.0" text="Tags" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+
+      <!-- Info Section -->
+      <VBox spacing="10.0" styleClass="info-section">
+         <children>
+            <Label styleClass="info-title" text="💡 Import Instructions" />
+            <Text styleClass="info-text" text="Use the Import Cards button to upload flashcards from a text file. Click View Template to see the required format." wrappingWidth="600.0" />
+            <Text styleClass="info-text" text="Supported format: Simple text file with QUESTION:, ANSWER:, DIFFICULTY:, CATEGORY:, and TAGS: fields separated by --- (three dashes)." wrappingWidth="600.0" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</VBox>

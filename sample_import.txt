@@ -1,0 +1,44 @@
+QUESTION: What is polymorphism in Java?
+ANSWER: Polymorphism in Java is the ability of an object to take many forms. It allows a single interface to represent different underlying forms (data types). There are two types: compile-time polymorphism (method overloading) and runtime polymorphism (method overriding through inheritance).
+DIFFICULTY: MEDIUM
+CATEGORY: Java OOP Advanced
+TAGS: polymorphism, oop, inheritance, method overriding
+
+---
+
+QUESTION: Explain the difference between ArrayList and LinkedList in Java.
+ANSWER: ArrayList uses a dynamic array internally, providing fast random access (O(1)) but slower insertions/deletions in the middle (O(n)). LinkedList uses a doubly-linked list, offering fast insertions/deletions (O(1)) but slower random access (O(n)). Choose ArrayList for frequent access, LinkedList for frequent insertions/deletions.
+DIFFICULTY: MEDIUM
+CATEGORY: Java Collections
+TAGS: arraylist, linkedlist, collections, data structures
+
+---
+
+QUESTION: What is the purpose of the 'final' keyword in Java?
+ANSWER: The 'final' keyword in Java has three main uses:
+1. final variables: Cannot be reassigned once initialized (constants)
+2. final methods: Cannot be overridden by subclasses  
+3. final classes: Cannot be extended (like String class)
+
+It ensures immutability and prevents inheritance at different levels.
+DIFFICULTY: EASY
+CATEGORY: Java Basics
+TAGS: final, keyword, immutability, inheritance
+
+---
+
+QUESTION: How does garbage collection work in Java?
+ANSWER: Java's garbage collector automatically manages memory by identifying and removing objects that are no longer referenced. It works in phases: mark (identify unreachable objects), sweep (deallocate memory), and optionally compact (reduce fragmentation). The JVM uses different GC algorithms like Serial, Parallel, G1, or ZGC depending on configuration and heap size.
+DIFFICULTY: HARD
+CATEGORY: Java Memory Management
+TAGS: garbage collection, memory management, jvm, gc algorithms
+
+---
+
+QUESTION: What is a lambda expression in Java?
+ANSWER: A lambda expression is a concise way to represent anonymous functions introduced in Java 8. It enables functional programming by allowing you to write inline functions. Syntax: (parameters) -> expression or (parameters) -> { statements; }
+
+Example: list.forEach(item -> System.out.println(item));
+DIFFICULTY: MEDIUM
+CATEGORY: Java Advanced Features
+TAGS: lambda, java 8, functional programming, anonymous functions

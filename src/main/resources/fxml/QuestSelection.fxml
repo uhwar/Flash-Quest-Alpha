@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flashquest.ui.QuestSelectionController">
+   <children>
+      <!-- Header -->
+      <VBox styleClass="padding-large" spacing="16">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="20">
+               <children>
+                  <Button fx:id="backButton" onAction="#onBack" styleClass="button" text="⬅️ Back" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label styleClass="title" text="🗡️ Select Your Quest" />
+               </children>
+            </HBox>
+            <Separator />
+         </children>
+      </VBox>
+
+      <!-- Quest Options -->
+      <VBox styleClass="padding-large" spacing="20" VBox.vgrow="ALWAYS">
+         <children>
+            <!-- Quick Quest Option -->
+            <VBox styleClass="padding-medium" spacing="12" style="-fx-border-color: -fx-accent; -fx-border-width: 2px; -fx-border-radius: 8px; -fx-background-color: rgba(108, 92, 231, 0.1); -fx-background-radius: 8px;">
+               <children>
+                  <Label styleClass="header" text="⚡ Quick Quest" />
+                  <Label styleClass="label" text="Jump right into a 10-question learning adventure!" wrapText="true" />
+                  
+                  <HBox spacing="20">
+                     <children>
+                        <VBox spacing="4">
+                           <children>
+                              <Label styleClass="label" text="Questions:" />
+                              <Label fx:id="quickQuestQuestionsLabel" styleClass="xp" text="10" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="4">
+                           <children>
+                              <Label styleClass="label" text="Difficulty:" />
+                              <Label fx:id="quickQuestDifficultyLabel" styleClass="label" text="Balanced Mix" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="4">
+                           <children>
+                              <Label styleClass="label" text="Categories:" />
+                              <Label fx:id="quickQuestCategoriesLabel" styleClass="label" text="All Available" />
+                           </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <VBox spacing="4">
+                           <children>
+                              <Label styleClass="label" text="Max XP:" />
+                              <Label styleClass="success" text="175 XP" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  
+                  <Button fx:id="startQuickQuestButton" maxWidth="1.7976931348623157E308" onAction="#onStartQuickQuest" prefHeight="40" styleClass="primary" text="🚀 Start Quick Quest" />
+               </children>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Coming Soon Section -->
+            <VBox styleClass="padding-medium" spacing="12" style="-fx-border-color: -fx-outer-border; -fx-border-width: 1px; -fx-border-radius: 8px; -fx-background-color: rgba(255, 255, 255, 0.05); -fx-background-radius: 8px;">
+               <children>
+                  <Label styleClass="header" text="🔧 Quest Designer (Coming Soon)" />
+                  <Label styleClass="label" text="Create custom quests with specific categories, difficulty distributions, and question counts. Fine-tune your learning experience!" wrapText="true" />
+                  
+                  <HBox spacing="12">
+                     <children>
+                        <Label styleClass="label" text="✨ Custom question count (5-20)" />
+                        <Label styleClass="label" text="🎯 Category filtering" />
+                        <Label styleClass="label" text="⚖️ Difficulty balancing" />
+                     </children>
+                  </HBox>
+                  
+                  <Button fx:id="questDesignerButton" maxWidth="1.7976931348623157E308" onAction="#onQuestDesigner" prefHeight="40" text="🛠️ Quest Designer" disable="true" />
+               </children>
+            </VBox>
+
+            <!-- Player Status -->
+            <VBox spacing="8">
+               <children>
+                  <Label styleClass="header" text="🛡️ Hero Status" />
+                  <HBox spacing="20">
+                     <children>
+                        <VBox alignment="CENTER" spacing="4">
+                           <children>
+                              <Label fx:id="playerLevelLabel" styleClass="level" text="1" />
+                              <Label styleClass="label" text="Level" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="4">
+                           <children>
+                              <Label fx:id="playerHpLabel" styleClass="hp" text="❤️ 3/3" />
+                              <Label styleClass="label" text="Health" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="4">
+                           <children>
+                              <Label fx:id="availableFlashcardsLabel" styleClass="xp" text="32" />
+                              <Label styleClass="label" text="Flashcards" />
+                           </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER_RIGHT" spacing="4">
+                           <children>
+                              <Label fx:id="readyStatusLabel" styleClass="success" text="⚔️ Ready!" />
+                              <Label styleClass="label" text="Status" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

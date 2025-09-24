@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flashquest.ui.CustomTitleBarController" styleClass="custom-title-bar" alignment="CENTER_LEFT" spacing="8">
+   <children>
+      <!-- Window Icon and Title -->
+      <HBox alignment="CENTER_LEFT" spacing="8" HBox.hgrow="ALWAYS">
+         <children>
+            <Label fx:id="titleIcon" text="⚔️" styleClass="title-icon" />
+            <Label fx:id="titleLabel" text="FlashQuest - Gamified Learning" styleClass="title-text" />
+         </children>
+      </HBox>
+      
+      <!-- Spacer -->
+      <Region HBox.hgrow="ALWAYS" />
+      
+      <!-- Window Control Buttons -->
+      <HBox spacing="0" alignment="CENTER_RIGHT">
+         <children>
+            <Button fx:id="minimizeButton" onAction="#onMinimize" styleClass="title-button, minimize-button" text="−" />
+            <Button fx:id="closeButton" onAction="#onClose" styleClass="title-button, close-button" text="×" />
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="8.0" left="12.0" right="8.0" top="8.0" />
+   </padding>
+</HBox>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flashquest.ui.SaveProfileController">
+   <children>
+      <!-- Header Section -->
+      <VBox alignment="CENTER" spacing="10.0" styleClass="welcome-header">
+         <children>
+            <Label styleClass="game-title" text="⚔️ FlashQuest" />
+            <Label styleClass="welcome-subtitle" text="Select Your Adventure" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+
+      <!-- Action Buttons Row -->
+      <HBox alignment="CENTER" spacing="15.0" styleClass="button-group">
+         <children>
+            <Button fx:id="selectProfileButton" mnemonicParsing="false" onAction="#onSelectProfile" styleClass="primary-button" text="🎮 Select Profile" />
+            <Button fx:id="newProfileButton" mnemonicParsing="false" onAction="#onNewProfile" styleClass="secondary-button" text="➕ New Profile" />
+            <Button fx:id="deleteProfileButton" mnemonicParsing="false" onAction="#onDeleteProfile" styleClass="danger-button" text="🗑️ Delete" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#onRefresh" styleClass="info-button" text="🔄 Refresh" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#onExit" styleClass="neutral-button" text="❌ Exit" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+
+      <!-- Main Content Area -->
+      <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <!-- Left Side - Profile Table -->
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="section-title" text="📂 Save Profiles" />
+                  
+                  <TableView fx:id="profileTable" styleClass="data-table" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="nameColumn" prefWidth="150.0" text="Profile Name" />
+                        <TableColumn fx:id="playersColumn" prefWidth="80.0" text="Players" />
+                        <TableColumn fx:id="flashcardsColumn" prefWidth="100.0" text="Cards" />
+                        <TableColumn fx:id="lastAccessedColumn" prefWidth="140.0" text="Last Played" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="200.0" text="Description" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+
+            <!-- Right Side - Profile Details -->
+            <VBox spacing="15.0" prefWidth="300.0">
+               <children>
+                  <Label styleClass="section-title" text="📋 Profile Details" />
+                  
+                  <VBox spacing="10.0" styleClass="details-panel">
+                     <children>
+                        <Label styleClass="details-label" text="Selected Profile:" />
+                        <Label fx:id="selectedProfileLabel" styleClass="details-value" text="No profile selected" />
+                        
+                        <Label styleClass="details-label" text="Description:" />
+                        <TextArea fx:id="selectedProfileDescription" editable="false" prefRowCount="4" styleClass="details-description" wrapText="true" />
+                        
+                        <Separator />
+                        
+                        <Label styleClass="info-text" text="💡 Double-click a profile to select it quickly" />
+                        <Label styleClass="info-text" text="🎮 Profiles can contain multiple players" />
+                        <Label styleClass="info-text" text="📚 Each profile has its own flashcard collection" />
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+
+      <!-- Footer -->
+      <HBox alignment="CENTER" spacing="10.0" styleClass="footer">
+         <children>
+            <Label styleClass="footer-text" text="FlashQuest - Educational RPG Adventure" />
+            <Separator orientation="VERTICAL" />
+            <Label styleClass="footer-text" text="Create multiple save profiles to organize your learning journey" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
