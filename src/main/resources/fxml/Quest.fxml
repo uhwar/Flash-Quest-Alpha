@@ -80,33 +80,37 @@
       <!-- Main quest content -->
       <VBox styleClass="padding-large" spacing="24" VBox.vgrow="ALWAYS">
          <children>
-            <!-- Question section -->
-            <VBox spacing="16" VBox.vgrow="ALWAYS">
+            <!-- Question and Answer sections in horizontal layout -->
+            <HBox spacing="20" VBox.vgrow="ALWAYS">
                <children>
-                  <Label styleClass="header" text="📋 Question" />
-                  
-                  <!-- Question display -->
-                  <ScrollPane fx:id="questionScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="question-display">
-                     <content>
-                        <VBox spacing="12" styleClass="padding-medium">
-                           <children>
-                              <Label fx:id="questionLabel" styleClass="title" wrapText="true" text="What is the difference between == and .equals() in Java?" />
-                              <Label fx:id="categoryLabel" styleClass="achievement-badge" text="📚 Java Basics" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
+                  <!-- Question section -->
+                  <VBox spacing="16" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="header" text="📋 Question" />
+                        
+                        <!-- Question display -->
+                        <ScrollPane fx:id="questionScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="question-display">
+                           <content>
+                              <VBox spacing="12" styleClass="padding-medium">
+                                 <children>
+                                    <Label fx:id="questionLabel" styleClass="quest-question-text" wrapText="true" text="What is the difference between == and .equals() in Java?" />
+                                    <Label fx:id="categoryLabel" styleClass="achievement-badge" text="📚 Java Basics" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                   
                   <!-- Answer section (initially hidden) -->
-                  <VBox fx:id="answerSection" spacing="12" visible="false" managed="false">
+                  <VBox fx:id="answerSection" spacing="16" visible="false" managed="false" HBox.hgrow="ALWAYS">
                      <children>
-                        <Separator />
                         <Label styleClass="header" text="💡 Answer" />
-                        <ScrollPane fitToWidth="true" maxHeight="200" styleClass="answer-display">
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="answer-display">
                            <content>
                               <VBox styleClass="padding-medium">
                                  <children>
-                                    <Label fx:id="answerLabel" styleClass="subtitle" wrapText="true" text="== compares object references (memory addresses), while .equals() compares object content. For primitives, == compares values directly." />
+                                    <Label fx:id="answerLabel" styleClass="quest-answer-text" wrapText="true" text="== compares object references (memory addresses), while .equals() compares object content. For primitives, == compares values directly." />
                                  </children>
                               </VBox>
                            </content>
@@ -114,7 +118,7 @@
                      </children>
                   </VBox>
                </children>
-            </VBox>
+            </HBox>
             
             <!-- Action buttons -->
             <VBox spacing="12">

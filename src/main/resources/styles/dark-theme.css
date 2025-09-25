@@ -582,6 +582,21 @@
     -fx-border-color: -fx-success-color;
 }
 
+/* Smaller font sizes for question and answer text */
+.quest-question-text {
+    -fx-font-size: 0.9em;
+    -fx-font-weight: 500;
+    -fx-text-fill: #f0f0f0;
+    -fx-wrap-text: true;
+}
+
+.quest-answer-text {
+    -fx-font-size: 0.85em;
+    -fx-font-weight: normal;
+    -fx-text-fill: #e0e0e0;
+    -fx-wrap-text: true;
+}
+
 .quest-progress {
     -fx-accent: -fx-xp-color;
 }
@@ -626,6 +641,14 @@
     -fx-min-height: 2em;
 }
 
+.scale-small .quest-question-text {
+    -fx-font-size: 0.8em;
+}
+
+.scale-small .quest-answer-text {
+    -fx-font-size: 0.75em;
+}
+
 /* Medium scaling - for 1080p with higher DPI or 1440p standard */
 .scale-medium .button {
     -fx-font-size: 0.8em;     /* Larger font for better readability */
@@ -651,6 +674,14 @@
     -fx-font-size: 1.1em;
     -fx-padding: 0.6em 0.8em;
     -fx-min-height: 2.4em;
+}
+
+.scale-medium .quest-question-text {
+    -fx-font-size: 0.9em;
+}
+
+.scale-medium .quest-answer-text {
+    -fx-font-size: 0.85em;
 }
 
 /* Large scaling - for 1440p with high DPI or 4K standard */
@@ -680,6 +711,14 @@
     -fx-min-height: 2.8em;
 }
 
+.scale-large .quest-question-text {
+    -fx-font-size: 1em;
+}
+
+.scale-large .quest-answer-text {
+    -fx-font-size: 0.95em;
+}
+
 /* Extra large scaling - for 4K with high DPI */
 .scale-xlarge .button {
     -fx-font-size: 1em;       /* Larger font for better readability */
@@ -705,6 +744,14 @@
     -fx-font-size: 1.5em;
     -fx-padding: 0.8em 1em;
     -fx-min-height: 3.2em;
+}
+
+.scale-xlarge .quest-question-text {
+    -fx-font-size: 1.1em;
+}
+
+.scale-xlarge .quest-answer-text {
+    -fx-font-size: 1.05em;
 }
 
 /* Progress bars scaling */
