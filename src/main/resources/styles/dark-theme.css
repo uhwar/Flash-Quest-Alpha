@@ -51,12 +51,12 @@
     -fx-border-width: 1px;
     -fx-border-radius: 4px;
     -fx-background-radius: 4px;
-    -fx-font-size: 0.65em;   /* Much smaller font */
+    -fx-font-size: 0.8em;      /* Increased font size for better readability */
     -fx-font-weight: 500;
-    -fx-padding: 0.25em 0.5em; /* Minimal padding */
-    -fx-min-width: 2em;      /* Very compact width */
-    -fx-min-height: 1.3em;   /* Very compact height */
-    -fx-max-width: 200px;    /* Limit maximum button width */
+    -fx-padding: 0.4em 0.8em;  /* More generous padding */
+    -fx-min-width: 3em;        /* Wider minimum width */
+    -fx-min-height: 1.8em;     /* Taller minimum height */
+    -fx-max-width: 300px;      /* Increased maximum width */
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
 }
@@ -111,6 +111,83 @@
 .button.error:hover {
     -fx-background-color: #ec6250;
     -fx-border-color: #f17260;
+}
+
+/* FlashcardManager Button Styles */
+.button.primary-button {
+    -fx-background-color: #6c5ce7;
+    -fx-text-fill: white;
+    -fx-border-color: #7c6ce7;
+    -fx-font-weight: bold;
+    -fx-min-width: 120px;
+    -fx-pref-width: 140px;
+    -fx-max-width: 200px;
+}
+
+.button.primary-button:hover {
+    -fx-background-color: #7c6ce7;
+    -fx-border-color: #8c7ce7;
+}
+
+.button.primary-button:pressed {
+    -fx-background-color: #5c4ce7;
+}
+
+.button.secondary-button {
+    -fx-background-color: #3a3a44;
+    -fx-text-fill: #e8e8e8;
+    -fx-border-color: #4a4a54;
+    -fx-font-weight: 500;
+    -fx-min-width: 120px;
+    -fx-pref-width: 140px;
+    -fx-max-width: 200px;
+}
+
+.button.secondary-button:hover {
+    -fx-background-color: #4a4a54;
+    -fx-border-color: #6c5ce7;
+}
+
+.button.secondary-button:pressed {
+    -fx-background-color: #2a2a34;
+}
+
+.button.info-button {
+    -fx-background-color: #17a2b8;
+    -fx-text-fill: white;
+    -fx-border-color: #1b9aae;
+    -fx-font-weight: 500;
+    -fx-min-width: 120px;
+    -fx-pref-width: 140px;
+    -fx-max-width: 200px;
+}
+
+.button.info-button:hover {
+    -fx-background-color: #1b9aae;
+    -fx-border-color: #209fbc;
+}
+
+.button.info-button:pressed {
+    -fx-background-color: #138496;
+}
+
+/* Back button style */
+.button.back-button {
+    -fx-background-color: #4a4a54;
+    -fx-text-fill: #e8e8e8;
+    -fx-border-color: #5a5a64;
+    -fx-font-weight: 500;
+    -fx-min-width: 80px;
+    -fx-pref-width: 100px;
+}
+
+.button.back-button:hover {
+    -fx-background-color: #5a5a64;
+    -fx-border-color: #6c5ce7;
+}
+
+.button.back-button:pressed {
+    -fx-background-color: #3a3a44;
 }
 
 /* Text Input Fields */
@@ -505,11 +582,11 @@
 
 /* Small scaling - for lower resolution displays or compact layouts */
 .scale-small .button {
-    -fx-font-size: 0.55em;    /* Very compact for small screens */
-    -fx-padding: 0.2em 0.4em; /* Minimal padding */
-    -fx-min-width: 1.8em;     /* Very small width */
-    -fx-min-height: 1.1em;    /* Very small height */
-    -fx-max-width: 120px;     /* Limit button width */
+    -fx-font-size: 0.7em;     /* Larger font for better readability */
+    -fx-padding: 0.3em 0.6em; /* More generous padding */
+    -fx-min-width: 2.5em;     /* Wider minimum width */
+    -fx-min-height: 1.5em;    /* Taller minimum height */
+    -fx-max-width: 200px;     /* Increased maximum width */
 }
 
 .scale-small .label.title {
@@ -528,11 +605,11 @@
 
 /* Medium scaling - for 1080p with higher DPI or 1440p standard */
 .scale-medium .button {
-    -fx-font-size: 0.6em;     /* Compact for medium screens */
-    -fx-padding: 0.25em 0.5em; /* Minimal padding */
-    -fx-min-width: 2em;       /* Compact width */
-    -fx-min-height: 1.2em;    /* Compact height */
-    -fx-max-width: 150px;     /* Limit button width */
+    -fx-font-size: 0.8em;     /* Larger font for better readability */
+    -fx-padding: 0.4em 0.8em; /* More generous padding */
+    -fx-min-width: 3em;       /* Wider minimum width */
+    -fx-min-height: 1.8em;    /* Taller minimum height */
+    -fx-max-width: 250px;     /* Increased maximum width */
 }
 
 .scale-medium .label.title {
@@ -551,11 +628,11 @@
 
 /* Large scaling - for 1440p with high DPI or 4K standard */
 .scale-large .button {
-    -fx-font-size: 0.7em;     /* Compact for large screens */
-    -fx-padding: 0.3em 0.6em; /* Compact padding */
-    -fx-min-width: 2.2em;     /* Compact width */
-    -fx-min-height: 1.4em;    /* Compact height */
-    -fx-max-width: 180px;     /* Limit button width */
+    -fx-font-size: 0.9em;     /* Larger font for better readability */
+    -fx-padding: 0.5em 1em;   /* More generous padding */
+    -fx-min-width: 3.5em;     /* Wider minimum width */
+    -fx-min-height: 2em;      /* Taller minimum height */
+    -fx-max-width: 300px;     /* Increased maximum width */
 }
 
 .scale-large .label.title {
@@ -574,11 +651,11 @@
 
 /* Extra large scaling - for 4K with high DPI */
 .scale-xlarge .button {
-    -fx-font-size: 0.75em;    /* Compact for high-DPI screens */
-    -fx-padding: 0.35em 0.7em; /* Compact padding */
-    -fx-min-width: 2.5em;     /* Compact width */
-    -fx-min-height: 1.5em;    /* Compact height */
-    -fx-max-width: 200px;     /* Limit button width for 30% screen usage */
+    -fx-font-size: 1em;       /* Larger font for better readability */
+    -fx-padding: 0.6em 1.2em; /* More generous padding */
+    -fx-min-width: 4em;       /* Wider minimum width */
+    -fx-min-height: 2.2em;    /* Taller minimum height */
+    -fx-max-width: 350px;     /* Increased maximum width */
 }
 
 .scale-xlarge .label.title {

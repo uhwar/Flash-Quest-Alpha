@@ -72,22 +72,22 @@
          <children>
             <Label styleClass="header" text="⚡ Ready for Adventure?" />
             
-            <VBox spacing="12" VBox.vgrow="ALWAYS">
+            <VBox spacing="12" alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="startQuestButton" maxWidth="1.7976931348623157E308" onAction="#onStartQuest" prefHeight="50" styleClass="primary" text="🚀 Start Quest">
+                  <Button fx:id="startQuestButton" onAction="#onStartQuest" prefHeight="50" prefWidth="300" maxWidth="400" styleClass="primary" text="🚀 Start Quest">
                      <VBox.margin>
                         <Insets bottom="8.0" />
                      </VBox.margin>
                   </Button>
                   
-                  <HBox spacing="12">
+                  <HBox spacing="12" alignment="CENTER">
                      <children>
-                        <Button fx:id="addFlashcardButton" maxWidth="1.7976931348623157E308" onAction="#onAddFlashcard" prefHeight="40" text="➕ Add Flashcard" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="viewStatsButton" maxWidth="1.7976931348623157E308" onAction="#onViewStats" prefHeight="40" text="📊 View Stats" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="addFlashcardButton" onAction="#onAddFlashcard" prefHeight="40" prefWidth="145" maxWidth="200" text="➕ Add Flashcard" />
+                        <Button fx:id="viewStatsButton" onAction="#onViewStats" prefHeight="40" prefWidth="145" maxWidth="200" text="📊 View Stats" />
                      </children>
                   </HBox>
                   
-                  <Button fx:id="manageFlashcardsButton" maxWidth="1.7976931348623157E308" onAction="#onManageFlashcards" prefHeight="40" text="📝 Manage Flashcards" />
+                  <Button fx:id="manageFlashcardsButton" onAction="#onManageFlashcards" prefHeight="40" prefWidth="300" maxWidth="400" text="📝 Manage Flashcards" />
                   
                   <Region VBox.vgrow="ALWAYS" />
                   
