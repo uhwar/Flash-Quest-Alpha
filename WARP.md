@@ -12,17 +12,12 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 #### Using Build Scripts (Recommended)
 ```powershell
-# PowerShell build script (handles Maven path automatically)
-.\build.ps1
+# Simple PowerShell build script (most reliable)
+.\build-simple.ps1
 
-# Batch build script (Windows)
-.\build.bat
-
-# Build with tests included
-.\build.ps1 -SkipTests:$false
-
-# Specify custom Maven path if needed
-.\build.ps1 -MavenPath "C:\path\to\maven\bin\mvn.cmd"
+# Alternative build scripts
+.\build.ps1        # More complex script with auto-detection
+.\build.bat        # Windows batch script
 ```
 
 #### Direct Maven Commands
@@ -390,11 +385,12 @@ If you encounter "mvn is not recognized" errors:
 
 #### Quick Fix - Use Build Scripts
 ```powershell
-# PowerShell script automatically finds Maven
-.\build.ps1
+# Simple, reliable PowerShell script (recommended)
+.\build-simple.ps1
 
-# Batch script with fallback logic
-.\build.bat
+# Alternative scripts (more complex auto-detection)
+.\build.ps1      # PowerShell with Maven path detection
+.\build.bat      # Batch script with fallback logic
 ```
 
 #### Manual Maven Path Setup
