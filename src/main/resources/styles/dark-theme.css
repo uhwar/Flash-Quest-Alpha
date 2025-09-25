@@ -612,6 +612,43 @@
     -fx-font-weight: bold;
 }
 
+/* Start Screen Save List Styling */
+.save-list {
+    -fx-background-color: #2b2b35;
+    -fx-border-color: #6c5ce7;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(108, 92, 231, 0.3), 4, 0, 0, 2);
+}
+
+.save-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e8e8e8;
+    -fx-padding: 12px 16px;
+    -fx-border-color: transparent transparent #3a3a44 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-font-size: 0.9em;
+    -fx-line-spacing: 4px;
+}
+
+.save-list .list-cell:hover {
+    -fx-background-color: rgba(108, 92, 231, 0.15);
+    -fx-effect: dropshadow(gaussian, rgba(108, 92, 231, 0.2), 2, 0, 0, 1);
+}
+
+.save-list .list-cell:selected {
+    -fx-background-color: rgba(108, 92, 231, 0.3);
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(108, 92, 231, 0.4), 3, 0, 0, 2);
+}
+
+.save-list:focused .list-cell:selected {
+    -fx-background-color: rgba(108, 92, 231, 0.4);
+    -fx-border-color: transparent transparent #6c5ce7 transparent;
+    -fx-border-width: 0 0 2px 0;
+}
+
 /* Universal Scaling Classes - Works on all PC configurations */
 
 /* Small scaling - for lower resolution displays or compact layouts */

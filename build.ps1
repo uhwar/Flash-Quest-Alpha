@@ -14,19 +14,10 @@ Write-Host ""
 
 # Function to find Maven
 function Find-Maven {
-    # Check specified path first
+    # Check specified path first (the known working path)
     if (Test-Path $MavenPath) {
         Write-Host "✓ Maven found at: $MavenPath" -ForegroundColor Green
         return $MavenPath
-    }
-    
-    # Check if mvn is in PATH
-    try {
-        $null = Get-Command "mvn" -ErrorAction Stop
-        Write-Host "✓ Maven found in PATH" -ForegroundColor Green
-        return "mvn"
-    } catch {
-        # Do nothing, continue searching
     }
     
     # Search common locations
@@ -38,11 +29,24 @@ function Find-Maven {
     )
     
     foreach ($path in $commonPaths) {
+        if (Test-Path $path) {
+            Write-Host "✓ Maven found at: $path" -ForegroundColor Green
+            return $path
+        }
         $resolved = Resolve-Path $path -ErrorAction SilentlyContinue
         if ($resolved) {
             Write-Host "✓ Maven found at: $resolved" -ForegroundColor Green
             return $resolved.Path
         }
+    }
+    
+    # Check if mvn is in PATH as last resort
+    try {
+        $mvnCmd = Get-Command "mvn" -ErrorAction Stop
+        Write-Host "✓ Maven found in PATH at: $($mvnCmd.Source)" -ForegroundColor Green
+        return $mvnCmd.Source
+    } catch {
+        # Maven not found anywhere
     }
     
     return $null
@@ -91,14 +95,20 @@ Write-Host ""
 
 # Execute Maven build
 try {
-    & $mvnCommand @buildArgs
-    if ($LASTEXITCODE -ne 0) {
-        throw "Maven build failed with exit code $LASTEXITCODE"
+    Write-Host "Executing: $mvnCommand $($buildArgs -join ' ')" -ForegroundColor Gray
+    
+    # Use Start-Process for more reliable execution
+    $process = Start-Process -FilePath $mvnCommand -ArgumentList $buildArgs -Wait -PassThru -NoNewWindow
+    
+    if ($process.ExitCode -ne 0) {
+        throw "Maven build failed with exit code $($process.ExitCode)"
     }
 } catch {
     Write-Host ""
     Write-Host "✗ ERROR: Build failed!" -ForegroundColor Red
     Write-Host "Check the output above for error details." -ForegroundColor Gray
+    Write-Host "Debug info: mvnCommand = '$mvnCommand'" -ForegroundColor Gray
+    Write-Host "Build args: $($buildArgs -join ' ')" -ForegroundColor Gray
     exit 1
 }
 

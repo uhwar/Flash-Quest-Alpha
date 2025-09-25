@@ -50,6 +50,8 @@ public class DataService {
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        // Ignore unknown properties for schema migration
+        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper;
     }
     
@@ -178,9 +180,8 @@ public class DataService {
             throw new RuntimeException("Data deletion failed", e);
         }
     }
-    
     /**
-     * Gets the size of save data in bytes.
+     * Gets total save data size in bytes.
      */
     public long getSaveDataSize() {
         long totalSize = 0;
@@ -194,6 +195,79 @@ public class DataService {
         return totalSize;
     }
     
+    /**
+     * Gets a list of all available player save files.
+     */
+    public List<SaveInfo> getAvailableSaves() {
+        List<SaveInfo> saves = new ArrayList<>();
+        
+        try {
+            // Check for default player save
+            Path playerFile = dataDirectory.resolve(PLAYER_FILE);
+            if (Files.exists(playerFile)) {
+                try {
+                    Player player = objectMapper.readValue(playerFile.toFile(), Player.class);
+                    long lastModified = Files.getLastModifiedTime(playerFile).toMillis();
+                    saves.add(new SaveInfo(player.getName(), player.getCurrentLevel(), 
+                        player.getTotalXp(), player.getQuestsCompleted(), lastModified, "default"));
+                } catch (Exception e) {
+                    logger.warn("Failed to read player save: {}", playerFile, e);
+                    // Add corrupted save entry
+                    long lastModified = Files.getLastModifiedTime(playerFile).toMillis();
+                    saves.add(new SaveInfo("Corrupted Save", 0, 0, 0, lastModified, "default"));
+                }
+            }
+            
+            // Sort by last modified time (most recent first)
+            saves.sort((a, b) -> Long.compare(b.getLastModified(), a.getLastModified()));
+            
+        } catch (Exception e) {
+            logger.error("Error scanning for save files", e);
+        }
+        
+        return saves;
+    }
+    
+    /**
+     * Information about a save file.
+     */
+    public static class SaveInfo {
+        private final String playerName;
+        private final int level;
+        private final int totalXp;
+        private final int questsCompleted;
+        private final long lastModified;
+        private final String saveId;
+        
+        public SaveInfo(String playerName, int level, int totalXp, int questsCompleted, long lastModified, String saveId) {
+            this.playerName = playerName;
+            this.level = level;
+            this.totalXp = totalXp;
+            this.questsCompleted = questsCompleted;
+            this.lastModified = lastModified;
+            this.saveId = saveId;
+        }
+        
+        public String getPlayerName() { return playerName; }
+        public int getLevel() { return level; }
+        public int getTotalXp() { return totalXp; }
+        public int getQuestsCompleted() { return questsCompleted; }
+        public long getLastModified() { return lastModified; }
+        public String getSaveId() { return saveId; }
+        
+        public String getFormattedLastModified() {
+            java.time.LocalDateTime dateTime = java.time.LocalDateTime.ofInstant(
+                java.time.Instant.ofEpochMilli(lastModified), 
+                java.time.ZoneId.systemDefault());
+            return dateTime.format(java.time.format.DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm"));
+        }
+        
+        @Override
+        public String toString() {
+            return String.format("%s (Level %d, %d XP, %d Quests)", 
+                playerName, level, totalXp, questsCompleted);
+        }
+    }
     // Private helper methods
     
     private <T> void saveToFileWithBackup(T object, Path filePath, String dataType) {

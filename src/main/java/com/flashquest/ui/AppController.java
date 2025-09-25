@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -33,21 +34,14 @@ public class AppController {
     }
     
     /**
-     * Initializes the application and shows the appropriate starting screen.
+     * Initializes the application and shows the start screen.
      */
     public void initialize() {
         try {
             logger.info("Initializing FlashQuest application");
             
-            // Initialize game service
-            gameService.initializeGame();
-            
-            // Check if player exists, show appropriate screen
-            if (gameService.hasPlayer()) {
-                showMainMenu();
-            } else {
-                showPlayerCreation();
-            }
+            // Always show start screen first - it will handle save loading
+            showStartScreen();
             
         } catch (Exception e) {
             logger.error("Failed to initialize application", e);
@@ -57,10 +51,26 @@ public class AppController {
     }
     
     /**
-     * Shows the player creation dialog for first-time users.
+     * Shows the player creation dialog for new games.
      */
     public void showPlayerCreation() {
         try {
+            // Clear any existing save data for new game
+            if (gameService.hasPlayer()) {
+                Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmDialog.setTitle("New Game");
+                confirmDialog.setHeaderText("Create New Save");
+                confirmDialog.setContentText("This will overwrite your existing save. Continue?");
+                confirmDialog.getDialogPane().getStylesheets().add(
+                    getClass().getResource("/styles/dark-theme.css").toExternalForm());
+                
+                Optional<ButtonType> confirmResult = confirmDialog.showAndWait();
+                if (confirmResult.isEmpty() || confirmResult.get() != ButtonType.OK) {
+                    showStartScreen(); // Return to start screen
+                    return;
+                }
+            }
+            
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Welcome to FlashQuest! 🎮");
             dialog.setHeaderText("Create Your Hero");
@@ -75,20 +85,42 @@ public class AppController {
                         showErrorDialog("Invalid Name", "Player name cannot be empty!");
                         showPlayerCreation(); // Try again
                     } else {
-                        gameService.createNewPlayer(name);
-                        showMainMenu();
+                        // Clear existing save data and create new player
+                        try {
+                            if (gameService.hasPlayer()) {
+                                gameService.createBackup(); // Backup before clearing
+                                gameService.deleteAllData(); // Clear existing data
+                            }
+                            
+                            gameService.initializeGame(); // Reinitialize
+                            gameService.createNewPlayer(name);
+                            showMainMenu();
+                            
+                        } catch (Exception e) {
+                            logger.error("Failed to create new player", e);
+                            showErrorDialog("Error", "Failed to create new player: " + e.getMessage());
+                            showStartScreen();
+                        }
                     }
                 },
                 () -> {
-                    // User cancelled - exit application
-                    primaryStage.close();
+                    // User cancelled - return to start screen
+                    showStartScreen();
                 }
             );
             
         } catch (Exception e) {
             logger.error("Error in player creation", e);
             showErrorDialog("Error", "Failed to create player: " + e.getMessage());
+            showStartScreen();
         }
+    }
+    
+    /**
+     * Shows the start screen with save selection.
+     */
+    public void showStartScreen() {
+        loadScreen("/fxml/StartScreen.fxml", "FlashQuest - Welcome");
     }
     
     /**

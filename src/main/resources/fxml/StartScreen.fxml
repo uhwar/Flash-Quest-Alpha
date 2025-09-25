@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flashquest.ui.StartScreenController">
+   <children>
+      <!-- Title Section -->
+      <VBox alignment="CENTER" styleClass="padding-large" spacing="16">
+         <children>
+            <Label styleClass="title" text="⚔️ FlashQuest ⚔️" />
+            <Label styleClass="subtitle" text="Gamified Learning Adventure" />
+            <Separator />
+         </children>
+      </VBox>
+      
+      <!-- Main Content -->
+      <VBox styleClass="padding-large" spacing="24" VBox.vgrow="ALWAYS">
+         <children>
+            <!-- Existing Saves Section -->
+            <VBox spacing="12">
+               <children>
+                  <Label styleClass="header" text="🏰 Continue Your Adventure" />
+                  
+                  <!-- Save List -->
+                  <ListView fx:id="saveListView" prefHeight="200" styleClass="save-list" />
+                  
+                  <!-- Load Game Buttons -->
+                  <HBox spacing="12">
+                     <children>
+                        <Button fx:id="loadGameButton" onAction="#onLoadGame" prefHeight="40" styleClass="primary" text="🎮 Continue Game" disable="true" />
+                        <Button fx:id="deleteGameButton" onAction="#onDeleteGame" prefHeight="40" styleClass="error" text="🗑️ Delete Save" disable="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <Separator />
+            
+            <!-- New Game Section -->
+            <VBox spacing="12">
+               <children>
+                  <Label styleClass="header" text="⭐ Start New Adventure" />
+                  <Label styleClass="subtitle" text="Create a new hero and begin your learning quest" />
+                  
+                  <HBox spacing="12">
+                     <children>
+                        <Button fx:id="newGameButton" onAction="#onNewGame" prefHeight="45" styleClass="success" text="🆕 New Game" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <!-- Bottom Actions -->
+            <VBox spacing="8">
+               <children>
+                  <Separator />
+                  <HBox alignment="CENTER" spacing="16">
+                     <children>
+                        <Button fx:id="settingsButton" onAction="#onSettings" styleClass="secondary" text="⚙️ Settings" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="exitButton" onAction="#onExit" styleClass="error" text="❌ Exit" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

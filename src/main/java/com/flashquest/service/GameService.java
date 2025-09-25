@@ -445,4 +445,20 @@ public class GameService {
     public long getSaveDataSize() {
         return dataService.getSaveDataSize();
     }
+    
+    /**
+     * Deletes all save data and resets the game state.
+     */
+    public void deleteAllData() {
+        dataService.deleteAllData();
+        
+        // Reset game state
+        currentPlayer = null;
+        allFlashcards.clear();
+        savedQuests.clear();
+        activeQuest = null;
+        gameInitialized = false;
+        
+        logger.info("All game data deleted and state reset");
+    }
 }
