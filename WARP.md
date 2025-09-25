@@ -9,9 +9,31 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 ## Common Development Commands
 
 ### Building the Application
+
+#### Using Build Scripts (Recommended)
+```powershell
+# PowerShell build script (handles Maven path automatically)
+.\build.ps1
+
+# Batch build script (Windows)
+.\build.bat
+
+# Build with tests included
+.\build.ps1 -SkipTests:$false
+
+# Specify custom Maven path if needed
+.\build.ps1 -MavenPath "C:\path\to\maven\bin\mvn.cmd"
+```
+
+#### Direct Maven Commands
 ```bash
+# Note: These require Maven to be in PATH or use full path to mvn.cmd
+# For this project, Maven is located at: C:\apache-maven\bin\mvn.cmd
+
 # Clean and build (skip tests for faster build)
 mvn clean package -DskipTests=true
+# Or with full path:
+"C:\apache-maven\bin\mvn.cmd" clean package -DskipTests=true
 
 # Full build with tests
 mvn clean package
@@ -332,6 +354,37 @@ class Flashcard {
 - **Use `mvn test -Dtest=ClassName#methodName`** for individual test methods
 - **Only use `mvn clean`** when you need to force a complete rebuild
 - **Pattern matching**: `mvn test -Dtest="*Service*"` to test service classes only
+
+### Maven Path Issues
+
+If you encounter "mvn is not recognized" errors:
+
+#### Quick Fix - Use Build Scripts
+```powershell
+# PowerShell script automatically finds Maven
+.\build.ps1
+
+# Batch script with fallback logic
+.\build.bat
+```
+
+#### Manual Maven Path Setup
+```bash
+# Maven is installed at: C:\apache-maven
+# Use full path if not in PATH:
+"C:\apache-maven\bin\mvn.cmd" clean package -DskipTests=true
+
+# Or add to PATH environment variable:
+# 1. Open System Properties -> Environment Variables
+# 2. Add C:\apache-maven\bin to PATH
+# 3. Restart command prompt/PowerShell
+```
+
+#### Common Maven Locations
+- `C:\apache-maven\bin\mvn.cmd` (current installation)
+- `C:\Program Files\Apache\Maven\*\bin\mvn.cmd`
+- `C:\tools\apache-maven\bin\mvn.cmd`
+- `%M2_HOME%\bin\mvn.cmd` (if M2_HOME is set)
 
 ## File Structure
 
