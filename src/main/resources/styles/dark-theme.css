@@ -56,7 +56,7 @@
     -fx-padding: 0.4em 0.8em;  /* More generous padding */
     -fx-min-width: 3em;        /* Wider minimum width */
     -fx-min-height: 1.8em;     /* Taller minimum height */
-    -fx-max-width: 300px;      /* Increased maximum width */
+    -fx-max-width: 500px;      /* Much larger maximum width to prevent cutoff */
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
 }
@@ -119,9 +119,9 @@
     -fx-text-fill: white;
     -fx-border-color: #7c6ce7;
     -fx-font-weight: bold;
-    -fx-min-width: 120px;
-    -fx-pref-width: 140px;
-    -fx-max-width: 200px;
+    -fx-min-width: 150px;
+    -fx-pref-width: 180px;
+    -fx-max-width: 400px;
 }
 
 .button.primary-button:hover {
@@ -138,9 +138,9 @@
     -fx-text-fill: #e8e8e8;
     -fx-border-color: #4a4a54;
     -fx-font-weight: 500;
-    -fx-min-width: 120px;
-    -fx-pref-width: 140px;
-    -fx-max-width: 200px;
+    -fx-min-width: 150px;
+    -fx-pref-width: 180px;
+    -fx-max-width: 400px;
 }
 
 .button.secondary-button:hover {
@@ -157,9 +157,9 @@
     -fx-text-fill: white;
     -fx-border-color: #1b9aae;
     -fx-font-weight: 500;
-    -fx-min-width: 120px;
-    -fx-pref-width: 140px;
-    -fx-max-width: 200px;
+    -fx-min-width: 150px;
+    -fx-pref-width: 180px;
+    -fx-max-width: 400px;
 }
 
 .button.info-button:hover {
@@ -586,7 +586,7 @@
     -fx-padding: 0.3em 0.6em; /* More generous padding */
     -fx-min-width: 2.5em;     /* Wider minimum width */
     -fx-min-height: 1.5em;    /* Taller minimum height */
-    -fx-max-width: 200px;     /* Increased maximum width */
+    -fx-max-width: 400px;     /* Much larger maximum width to prevent cutoff */
 }
 
 .scale-small .label.title {
@@ -609,7 +609,7 @@
     -fx-padding: 0.4em 0.8em; /* More generous padding */
     -fx-min-width: 3em;       /* Wider minimum width */
     -fx-min-height: 1.8em;    /* Taller minimum height */
-    -fx-max-width: 250px;     /* Increased maximum width */
+    -fx-max-width: 450px;     /* Much larger maximum width to prevent cutoff */
 }
 
 .scale-medium .label.title {
@@ -632,7 +632,7 @@
     -fx-padding: 0.5em 1em;   /* More generous padding */
     -fx-min-width: 3.5em;     /* Wider minimum width */
     -fx-min-height: 2em;      /* Taller minimum height */
-    -fx-max-width: 300px;     /* Increased maximum width */
+    -fx-max-width: 500px;     /* Much larger maximum width to prevent cutoff */
 }
 
 .scale-large .label.title {
@@ -655,7 +655,7 @@
     -fx-padding: 0.6em 1.2em; /* More generous padding */
     -fx-min-width: 4em;       /* Wider minimum width */
     -fx-min-height: 2.2em;    /* Taller minimum height */
-    -fx-max-width: 350px;     /* Increased maximum width */
+    -fx-max-width: 600px;     /* Much larger maximum width to prevent cutoff */
 }
 
 .scale-xlarge .label.title {

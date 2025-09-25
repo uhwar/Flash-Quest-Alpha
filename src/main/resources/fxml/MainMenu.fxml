@@ -74,7 +74,7 @@
             
             <VBox spacing="12" alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="startQuestButton" onAction="#onStartQuest" prefHeight="50" prefWidth="300" maxWidth="400" styleClass="primary" text="🚀 Start Quest">
+                  <Button fx:id="startQuestButton" onAction="#onStartQuest" prefHeight="50" prefWidth="400" maxWidth="500" styleClass="primary" text="🚀 Start Quest">
                      <VBox.margin>
                         <Insets bottom="8.0" />
                      </VBox.margin>
@@ -82,12 +82,12 @@
                   
                   <HBox spacing="12" alignment="CENTER">
                      <children>
-                        <Button fx:id="addFlashcardButton" onAction="#onAddFlashcard" prefHeight="40" prefWidth="145" maxWidth="200" text="➕ Add Flashcard" />
-                        <Button fx:id="viewStatsButton" onAction="#onViewStats" prefHeight="40" prefWidth="145" maxWidth="200" text="📊 View Stats" />
+                        <Button fx:id="addFlashcardButton" onAction="#onAddFlashcard" prefHeight="40" prefWidth="200" maxWidth="300" text="➕ Add Flashcard" />
+                        <Button fx:id="viewStatsButton" onAction="#onViewStats" prefHeight="40" prefWidth="200" maxWidth="300" text="📊 View Stats" />
                      </children>
                   </HBox>
                   
-                  <Button fx:id="manageFlashcardsButton" onAction="#onManageFlashcards" prefHeight="40" prefWidth="300" maxWidth="400" text="📝 Manage Flashcards" />
+                  <Button fx:id="manageFlashcardsButton" onAction="#onManageFlashcards" prefHeight="40" prefWidth="400" maxWidth="500" text="📝 Manage Flashcards" />
                   
                   <Region VBox.vgrow="ALWAYS" />
                   
