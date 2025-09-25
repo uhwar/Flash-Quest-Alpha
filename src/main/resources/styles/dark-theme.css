@@ -53,12 +53,19 @@
     -fx-background-radius: 4px;
     -fx-font-size: 0.8em;      /* Increased font size for better readability */
     -fx-font-weight: 500;
-    -fx-padding: 0.4em 0.8em;  /* More generous padding */
-    -fx-min-width: 3em;        /* Wider minimum width */
-    -fx-min-height: 1.8em;     /* Taller minimum height */
-    -fx-max-width: 500px;      /* Much larger maximum width to prevent cutoff */
+    -fx-padding: 0.6em 1.2em;  /* Extra generous padding all around */
+    -fx-min-width: 4em;        /* Wider minimum width */
+    -fx-min-height: 2.2em;     /* Taller minimum height */
+    -fx-max-width: 600px;      /* Even larger maximum width */
+    -fx-pref-width: -1;        /* Let button size naturally */
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 1, 0, 0, 1);
+    
+    /* JavaFX text overflow fixes */
+    -fx-text-overrun: clip;    /* Don't show ellipsis */
+    -fx-ellipsis-string: "";   /* Remove ellipsis completely */
+    -fx-content-display: center; /* Center content properly */
+    -fx-wrap-text: true;       /* Allow text to wrap to multiple lines */
 }
 
 .button:hover {
@@ -119,9 +126,13 @@
     -fx-text-fill: white;
     -fx-border-color: #7c6ce7;
     -fx-font-weight: bold;
-    -fx-min-width: 150px;
-    -fx-pref-width: 180px;
-    -fx-max-width: 400px;
+    -fx-padding: 0.6em 1.5em;
+    -fx-min-width: 8em;
+    -fx-pref-width: -1;
+    -fx-max-width: 500px;
+    -fx-text-overrun: clip;
+    -fx-ellipsis-string: "";
+    -fx-content-display: center;
 }
 
 .button.primary-button:hover {
@@ -138,9 +149,13 @@
     -fx-text-fill: #e8e8e8;
     -fx-border-color: #4a4a54;
     -fx-font-weight: 500;
-    -fx-min-width: 150px;
-    -fx-pref-width: 180px;
-    -fx-max-width: 400px;
+    -fx-padding: 0.6em 1.5em;
+    -fx-min-width: 8em;
+    -fx-pref-width: -1;
+    -fx-max-width: 500px;
+    -fx-text-overrun: clip;
+    -fx-ellipsis-string: "";
+    -fx-content-display: center;
 }
 
 .button.secondary-button:hover {
@@ -157,9 +172,13 @@
     -fx-text-fill: white;
     -fx-border-color: #1b9aae;
     -fx-font-weight: 500;
-    -fx-min-width: 150px;
-    -fx-pref-width: 180px;
-    -fx-max-width: 400px;
+    -fx-padding: 0.6em 1.5em;
+    -fx-min-width: 8em;
+    -fx-pref-width: -1;
+    -fx-max-width: 500px;
+    -fx-text-overrun: clip;
+    -fx-ellipsis-string: "";
+    -fx-content-display: center;
 }
 
 .button.info-button:hover {
@@ -583,10 +602,14 @@
 /* Small scaling - for lower resolution displays or compact layouts */
 .scale-small .button {
     -fx-font-size: 0.7em;     /* Larger font for better readability */
-    -fx-padding: 0.3em 0.6em; /* More generous padding */
-    -fx-min-width: 2.5em;     /* Wider minimum width */
-    -fx-min-height: 1.5em;    /* Taller minimum height */
-    -fx-max-width: 400px;     /* Much larger maximum width to prevent cutoff */
+    -fx-padding: 0.5em 1em;   /* Extra generous padding all around */
+    -fx-min-width: 3em;       /* Wider minimum width */
+    -fx-min-height: 2em;      /* Taller minimum height */
+    -fx-max-width: 500px;     /* Much larger maximum width to prevent cutoff */
+    -fx-pref-width: -1;       /* Let button size naturally */
+    -fx-text-overrun: clip;   /* Don't show ellipsis */
+    -fx-ellipsis-string: "";  /* Remove ellipsis completely */
+    -fx-content-display: center; /* Center content properly */
 }
 
 .scale-small .label.title {
@@ -606,10 +629,14 @@
 /* Medium scaling - for 1080p with higher DPI or 1440p standard */
 .scale-medium .button {
     -fx-font-size: 0.8em;     /* Larger font for better readability */
-    -fx-padding: 0.4em 0.8em; /* More generous padding */
-    -fx-min-width: 3em;       /* Wider minimum width */
-    -fx-min-height: 1.8em;    /* Taller minimum height */
-    -fx-max-width: 450px;     /* Much larger maximum width to prevent cutoff */
+    -fx-padding: 0.6em 1.2em; /* Extra generous padding all around */
+    -fx-min-width: 4em;       /* Wider minimum width */
+    -fx-min-height: 2.2em;    /* Taller minimum height */
+    -fx-max-width: 550px;     /* Much larger maximum width to prevent cutoff */
+    -fx-pref-width: -1;       /* Let button size naturally */
+    -fx-text-overrun: clip;   /* Don't show ellipsis */
+    -fx-ellipsis-string: "";  /* Remove ellipsis completely */
+    -fx-content-display: center; /* Center content properly */
 }
 
 .scale-medium .label.title {
@@ -629,10 +656,14 @@
 /* Large scaling - for 1440p with high DPI or 4K standard */
 .scale-large .button {
     -fx-font-size: 0.9em;     /* Larger font for better readability */
-    -fx-padding: 0.5em 1em;   /* More generous padding */
-    -fx-min-width: 3.5em;     /* Wider minimum width */
-    -fx-min-height: 2em;      /* Taller minimum height */
-    -fx-max-width: 500px;     /* Much larger maximum width to prevent cutoff */
+    -fx-padding: 0.7em 1.4em; /* Extra generous padding all around */
+    -fx-min-width: 4.5em;     /* Wider minimum width */
+    -fx-min-height: 2.5em;    /* Taller minimum height */
+    -fx-max-width: 600px;     /* Much larger maximum width to prevent cutoff */
+    -fx-pref-width: -1;       /* Let button size naturally */
+    -fx-text-overrun: clip;   /* Don't show ellipsis */
+    -fx-ellipsis-string: "";  /* Remove ellipsis completely */
+    -fx-content-display: center; /* Center content properly */
 }
 
 .scale-large .label.title {
@@ -652,10 +683,14 @@
 /* Extra large scaling - for 4K with high DPI */
 .scale-xlarge .button {
     -fx-font-size: 1em;       /* Larger font for better readability */
-    -fx-padding: 0.6em 1.2em; /* More generous padding */
-    -fx-min-width: 4em;       /* Wider minimum width */
-    -fx-min-height: 2.2em;    /* Taller minimum height */
-    -fx-max-width: 600px;     /* Much larger maximum width to prevent cutoff */
+    -fx-padding: 0.8em 1.6em; /* Extra generous padding all around */
+    -fx-min-width: 5em;       /* Wider minimum width */
+    -fx-min-height: 2.8em;    /* Taller minimum height */
+    -fx-max-width: 700px;     /* Much larger maximum width to prevent cutoff */
+    -fx-pref-width: -1;       /* Let button size naturally */
+    -fx-text-overrun: clip;   /* Don't show ellipsis */
+    -fx-ellipsis-string: "";  /* Remove ellipsis completely */
+    -fx-content-display: center; /* Center content properly */
 }
 
 .scale-xlarge .label.title {
