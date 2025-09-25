@@ -128,6 +128,7 @@ mvn clean compile
 - **`AppController.java`**: Central controller managing screen navigation, window scaling, and app lifecycle
 - **FXML Controllers**: Screen-specific controllers for each game view (MainMenu, Quest, FlashcardManager, etc.)
 - **Universal Scaling System**: Adaptive UI scaling for different screen resolutions and DPI settings
+- **Text Cutoff Prevention**: Comprehensive JavaFX button text truncation fixes applied across all scaling levels
 
 #### Service Layer (`com.flashquest.service`)
 - **`GameService.java`**: Main game logic coordinator and singleton service
@@ -341,6 +342,34 @@ class Flashcard {
 - **Data Safety**: All data operations should have backup and recovery mechanisms
 - **Validation**: Validate all user inputs before processing
 
+### JavaFX UI Development Guidelines
+
+#### Button Text Cutoff Prevention
+**CRITICAL**: Always apply these CSS properties to prevent JavaFX button text truncation:
+
+```css
+.button {
+    -fx-text-overrun: clip;      /* Prevents ellipsis (...) display */
+    -fx-ellipsis-string: "";     /* Removes ellipsis completely */
+    -fx-content-display: center; /* Centers content properly */
+    -fx-wrap-text: true;         /* Allows multi-line text wrapping */
+    -fx-pref-width: -1;          /* Lets buttons size naturally */
+    -fx-padding: 0.6em 1.2em;    /* Generous padding all around */
+}
+```
+
+#### Scaling-Specific Button Sizing
+- **Small scale**: 500px max-width, 0.5em-1em padding
+- **Medium scale**: 550px max-width, 0.6em-1.2em padding  
+- **Large scale**: 600px max-width, 0.7em-1.4em padding
+- **XLarge scale**: 700px max-width, 0.8em-1.6em padding
+
+#### FXML Layout Best Practices
+- **Avoid restrictive maxWidth** in FXML - let CSS handle sizing
+- **Use CENTER alignment** for button containers
+- **Remove prefWidth constraints** for natural button sizing
+- **Test on high DPI displays** to ensure text remains visible
+
 ### Testing Approach
 - **Unit Tests**: Focus on model classes and service layer logic
 - **Integration Tests**: Test data persistence and game flow
@@ -385,6 +414,25 @@ If you encounter "mvn is not recognized" errors:
 - `C:\Program Files\Apache\Maven\*\bin\mvn.cmd`
 - `C:\tools\apache-maven\bin\mvn.cmd`
 - `%M2_HOME%\bin\mvn.cmd` (if M2_HOME is set)
+
+### UI Troubleshooting
+
+#### Button Text Cutoff Issues
+If buttons show "..." text truncation:
+
+1. **Apply the proven CSS fixes** (see JavaFX UI Development Guidelines above)
+2. **Check FXML constraints** - remove restrictive maxWidth properties
+3. **Test on different DPI settings** (100%, 125%, 150%, 200%)
+4. **Verify scaling classes** are applied correctly (scale-small, scale-medium, etc.)
+
+#### Universal Scaling Problems
+- **AppController.java** automatically detects screen resolution and DPI
+- **CSS scaling classes** are applied based on screen size:
+  - 4K+ screens: scale-xlarge (1.4x base scaling)
+  - 1440p screens: scale-large (1.2x base scaling) 
+  - 1080p screens: scale-medium (1.0x base scaling)
+  - Lower resolutions: scale-small (0.8-0.9x base scaling)
+- **Manual override**: Modify `calculateUniversalScale()` in AppController if needed
 
 ## File Structure
 
