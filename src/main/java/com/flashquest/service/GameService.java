@@ -265,10 +265,11 @@ public class GameService {
             if (!correct) {
                 boolean died = currentPlayer.takeDamage(1);
                 if (died) {
-                    // Quest failed due to HP loss
+                    // Quest failed due to HP loss - this is not an error, it's game mechanics
+                    activeQuest.completeWithFailure();
                     activeQuest = null;
                     saveGameData();
-                    return new Quest.QuestionResult(0, false, true);
+                    return new Quest.QuestionResult(0, true, false); // Quest complete due to failure
                 }
             }
         }

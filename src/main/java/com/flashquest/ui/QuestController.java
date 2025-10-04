@@ -255,9 +255,12 @@ public class QuestController implements Initializable, ScreenController {
             
             // Check for quest completion or failure
             if (result.isQuestComplete()) {
-                handleQuestCompletion();
-            } else if (player.getCurrentHp() <= 0) {
-                handleQuestFailure();
+                // Check if quest completed due to HP loss (failure) or normal completion
+                if (player.getCurrentHp() <= 0) {
+                    handleQuestFailure();
+                } else {
+                    handleQuestCompletion();
+                }
             } else {
                 // Continue to next question
                 prepareNextQuestion();

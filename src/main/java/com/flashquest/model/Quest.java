@@ -145,6 +145,16 @@ public class Quest {
             totalXpEarned += 25;
         }
     }
+    
+    /**
+     * Completes the quest with failure (e.g., when HP reaches zero).
+     * No completion bonuses are awarded.
+     */
+    public void completeWithFailure() {
+        isActive = false;
+        isCompleted = true; // Still considered complete, just failed
+        // No additional XP bonuses for failed quests
+    }
 
     /**
      * Gets the current flashcard being asked.

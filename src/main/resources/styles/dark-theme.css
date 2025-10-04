@@ -887,6 +887,12 @@
     -fx-padding: 20; /* Buffer border around all content */
 }
 
+/* Comprehensive Layout Container Background Fix */
+/* Ensure all layout containers have consistent dark backgrounds */
+VBox, HBox, AnchorPane, BorderPane, StackPane, GridPane, FlowPane, TilePane {
+    -fx-background-color: transparent;
+}
+
 /* Compact VBox styling */
 VBox {
     -fx-background-color: transparent;
@@ -897,6 +903,21 @@ VBox {
 HBox {
     -fx-background-color: transparent;
     -fx-spacing: 8; /* Compact horizontal spacing */
+}
+
+/* Ensure content areas maintain dark theme */
+.content-area, .main-content {
+    -fx-background-color: #1a1a22;
+}
+
+/* Specific fixes for known white background issues */
+.root {
+    -fx-background-color: #1a1a22 !important;
+}
+
+/* Ensure Scene background consistency */
+Scene {
+    -fx-background-color: #1a1a22;
 }
 
 /* Custom Window Border - No Windows Default Border */

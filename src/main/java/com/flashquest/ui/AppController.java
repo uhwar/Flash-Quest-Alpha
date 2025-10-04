@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -177,6 +178,10 @@ public class AppController {
             // Calculate optimal window size for this system
             double[] optimalSize = calculateOptimalWindowSize();
             Scene scene = new Scene(root, optimalSize[0], optimalSize[1]);
+            
+            // Set scene background to dark theme color to prevent white bars
+            scene.setFill(Color.web("#1a1a22"));
+            
             scene.getStylesheets().add(getClass().getResource("/styles/dark-theme.css").toExternalForm());
             
             // Apply universal scaling
